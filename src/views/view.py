@@ -1,6 +1,7 @@
 from tkinter import Tk, Label, Button, Frame
 
-class view:
+class View:
+    
     def __init__ (self, master):
         #Master = Ventana principal
         self.master = master
@@ -21,5 +22,5 @@ class view:
     def on_button_click(self):
         self.label.config(text="Boton Presionado")
 
-    def update_label(self, nuevo_texto):   
-        self.label.config(text=nuevo_texto)     
+    def update_label(self, text):   
+        self.label.config(text=text)     
