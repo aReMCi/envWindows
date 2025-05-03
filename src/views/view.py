@@ -12,11 +12,11 @@ class View:
         self.frame.pack()
 
         #Crea y posiciona la etiqueta en la ventana
-        self.label = Label(self.frame, text= "Hola MVC!")
+        self.label = Label(self.frame, text= "Hola MVC!", bg="lightblue")
         self.label.pack()
 
         #Cera y muestra el botón en la ventana
-        self.button = Button(self.frame, text="Click aqui", command=self.on_button_click)
+        self.button = Button(self.frame, text="Click aqui", command=self.on_button_click, bg="red")
         self.button.pack()
 
     def on_button_click(self):

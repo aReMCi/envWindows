@@ -6,9 +6,9 @@ from models.model import DataModel as Model
 def main():
     root = tk.Tk()
     root.title("Tkinter MVC App")
-    root.geometry("600x400")
-    root.iconbitmap("logo.bmp")
+    root.geometry("600x400+100+0")
     root.config(bg="lightblue")
+    root.iconbitmap("src/logo.ico")
 
     model = Model()
     model.add_data("Sample Data option 1")
