@@ -16,19 +16,24 @@ class View:
         self.on_divide_button_click = None
         self.on_view_button_click = None
         self.on_clear_button_click = None
+        self.on_simplificar_button_click = None
 
         # Entrada para numerador y denominador
         self.numerador_entry = Entry(self.frame, width=10)
+        self.numerador_entry.config(bg="lightblue", fg="black")
         self.numerador_entry.pack()
         self.denominador_entry = Entry(self.frame, width=10)
+        self.denominador_entry.config(bg="lightblue", fg="black")
         self.denominador_entry.pack()
 
         # Botón para añadir fracción
         self.add_button = Button(self.frame, text="Añadir Fracción", command=self._handle_add_button_click)
+        self.add_button.config(bg="white", fg="black", activebackground= "lightblue")
         self.add_button.pack()
 
         # Botón para sumar fracciones
         self.sumar_button = Button(self.frame, text="Sumar", command=self._handle_sumar_button_click)
+        self.sumar_button.config(bg="white", fg="black")
         self.sumar_button.pack()
 
         # Botón para restar fracciones
@@ -47,6 +52,10 @@ class View:
         self.view_button = Button(self.frame, text="Ver Fracciones", command=self._handle_view_button_click)
         self.view_button.pack()
 
+        # Boton para simplificar fracción
+        self.simplificar_button = Button(self.frame, text="Simplificar Fracción", command=self._handle_simplificar_button_click)
+        self.simplificar_button.pack()
+        
         #Boton para limpiar
         self.clear_button = Button(self.frame, text="Limpiar", command=self._handle_clear_button_click)
         self.clear_button.pack()
@@ -88,6 +97,13 @@ class View:
         else:
             print("Error: No se ha asignado un controlador para el botón 'Dividir'")
 
+    def _handle_simplificar_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_simplificar_button_click:
+            self.on_simplificar_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Simplificar Fracción'")
+
     def _handle_view_button_click(self):
         """Llama al método asignado por el controlador."""
         if self.on_view_button_click:
@@ -99,6 +115,7 @@ class View:
         """Actualiza la etiqueta con el texto proporcionado."""
         if not hasattr(self, 'result_label'):
             self.result_label = Label(self.frame, text="")
+            self.result_label.config(bg="yellow", fg="black", font=("Arial", 14))
             self.result_label.pack()
         self.result_label.config(text=text)
 

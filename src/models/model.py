@@ -2,7 +2,7 @@ from .fraccion import Fraccion
 
 class DataModel:
     def __init__(self):
-        self.fracciones = []
+        self.fracciones = [] # Lista para almacenar las fracciones
 
     def add_fraccion(self, numerador, denominador):
         try:
@@ -61,3 +61,18 @@ class DataModel:
             fraccion2 = self.fracciones[-1]
             resultado = fraccion1.division(fraccion2)
         return resultado
+    
+    def simplificar(self):
+        if len(self.fracciones) < 1:
+            raise ValueError("Error: Se requiere al menos una fracción para simplificar")
+        else:
+            fraccion = self.fracciones[-1]
+            resultado = fraccion.simiplificar()
+            self.fracciones[-1] = resultado
+
+    def reemplazar(self, nuevo_numerador, nuevo_denominador,pos):  
+        try:
+            fraccion = self.fracciones[pos]
+            fraccion.reemplazar(nuevo_numerador, nuevo_denominador,pos)
+        except IndexError:
+            print("Error: Posición fuera de rango")

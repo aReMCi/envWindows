@@ -25,6 +25,14 @@ class Fraccion:
         if value == 0:
             raise ValueError("El denominador no puede ser cero")
         self._denominador = value
+
+    def reemplazar(self, nuevo_numerador, nuevo_denominador,pos):  
+        if nuevo_denominador == 0: 
+            raise ValueError("El denominador no puede ser cero")
+        else:    
+            self.numerador = nuevo_numerador
+            self.denominador = nuevo_denominador
+
     
     def suma(self, otra_fraccion):
         if self.denominador == otra_fraccion.denominador:
@@ -53,3 +61,7 @@ class Fraccion:
         nuevo_numerador = self.numerador * otra_fraccion.denominador
         nuevo_denominador = self.denominador * otra_fraccion.numerador
         return Fraccion(nuevo_numerador, nuevo_denominador)
+    
+    def simiplificar(self):
+        mcd = math.gcd(self.numerador, self.denominador)
+        return Fraccion(self.numerador // mcd, self.denominador // mcd)

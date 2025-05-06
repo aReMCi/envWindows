@@ -7,7 +7,7 @@ from models.model import DataModel as Model
 def main():
     # Crear la ventana principal
     root = tk.Tk()
-    root.title("Calculadora de")
+    root.title("Calculadora de Fracciones")
     root.geometry("600x400+100+0")
     root.config(bg="lightblue")
     root.iconbitmap("src/logo.ico")  # Asegúrate de que el archivo logo.ico exista y esté en la ruta correcta

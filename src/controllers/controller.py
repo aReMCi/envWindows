@@ -12,6 +12,7 @@ class Controller:
         self.view.on_divide_button_click = self.dividir_fracciones
         self.view.on_view_button_click = self.view_fracciones
         self.view.on_clear_button_click = self.clear_fracciones
+        self.view.on_simplificar_button_click = self.simplificar_fraccion
 
     def add_fraccion(self, numerador, denominador):
         """Añade una fracción al modelo."""
@@ -64,6 +65,19 @@ class Controller:
             self.view.update_display(f"Fracciones: {fraccion_texto}")
         else:
             self.view.update_display("No hay fracciones en el modelo")   
+
+    def simplificar_fraccion(self):
+        """Simplifica la última fracción del modelo."""
+        try:
+            fraccion = self.model.get_fraccion(-1)
+            if fraccion:
+                resultado = fraccion.simiplificar()
+                self.model.reemplazar(resultado.numerador, resultado.denominador,-1)
+                self.view.update_display(f"Fracción simplificada: {resultado.numerador}/{resultado.denominador}")
+            else:
+                self.view.update_display("No hay fracciones para simplificar")
+        except ValueError as e:
+            self.view.update_display(f"Error: {e}")
 
     def clear_fracciones(self):
         """Limpia todas las fracciones del modelo."""
