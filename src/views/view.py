@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Button, Frame, Entry
+from tkinter import Tk,Frame, Entry, Button, Label
 
 class View:
     def __init__(self, master):
@@ -8,33 +8,79 @@ class View:
         self.frame = Frame(master)
         self.frame.pack()
 
+        # Inicializa el atributo como None
+        self.on_add_button_click = None
+        self.on_sumar_button_click = None
+        self.on_subtract_button_click = None
+        self.on_multiply_button_click = None
+        self.on_divide_button_click = None
+
         # Entrada para numerador y denominador
-        self.numerador_entry = Entry(self.frame)
+        self.numerador_entry = Entry(self.frame, width=10)
         self.numerador_entry.pack()
-        self.denominador_entry = Entry(self.frame)
+        self.denominador_entry = Entry(self.frame, width=10)
         self.denominador_entry.pack()
 
         # Botón para añadir fracción
-        self.add_button = Button(self.frame, text="Añadir Fracción", command=self.on_add_button_click)
+        self.add_button = Button(self.frame, text="Añadir Fracción", command=self._handle_add_button_click)
         self.add_button.pack()
 
-        # Botones para operaciones
-        self.suma_button = Button(self.frame, text="Sumar", command=lambda: self.on_operate_button_click("suma"))
-        self.suma_button.pack()
+        # Botón para sumar fracciones
+        self.sumar_button = Button(self.frame, text="Sumar", command=self._handle_sumar_button_click)
+        self.sumar_button.pack()
 
-        self.resta_button = Button(self.frame, text="Restar", command=lambda: self.on_operate_button_click("resta"))
-        self.resta_button.pack()
+        # Botón para restar fracciones
+        self.subtract_button = Button(self.frame, text="Restar", command=self._handle_subtract_button_click)
+        self.subtract_button.pack()
 
-        self.multiplicacion_button = Button(self.frame, text="Multiplicar", command=lambda: self.on_operate_button_click("multiplicacion"))
-        self.multiplicacion_button.pack()
+        # Botón para multiplicar fracciones
+        self.multiply_button = Button(self.frame, text="Multiplicar", command=self._handle_multiply_button_click)
+        self.multiply_button.pack()
 
-        self.division_button = Button(self.frame, text="Dividir", command=lambda: self.on_operate_button_click("division"))
-        self.division_button.pack()
+        # Botón para dividir fracciones
+        self.divide_button = Button(self.frame, text="Dividir", command=self._handle_divide_button_click)
+        self.divide_button.pack()
 
-        # Etiqueta para mostrar resultados
-        self.result_label = Label(self.frame, text="")
-        self.result_label.pack()
+    def _handle_add_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_add_button_click:
+            numerador = int(self.numerador_entry.get())
+            denominador = int(self.denominador_entry.get())
+            self.on_add_button_click(numerador, denominador)
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Añadir Fracción'")
+
+    def _handle_sumar_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_sumar_button_click:
+            self.on_sumar_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Sumar'")
+    
+    def _handle_subtract_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_subtract_button_click:
+            self.on_subtract_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Restar'")
+
+    def _handle_multiply_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_multiply_button_click:
+            self.on_multiply_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Multiplicar'")
+    
+    def _handle_divide_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_divide_button_click:
+            self.on_divide_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Dividir'")
 
     def update_display(self, text):
         """Actualiza la etiqueta con el texto proporcionado."""
+        if not hasattr(self, 'result_label'):
+            self.result_label = Label(self.frame, text="")
+            self.result_label.pack()
         self.result_label.config(text=text)

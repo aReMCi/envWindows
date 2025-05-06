@@ -6,7 +6,10 @@ class Controller:
 
         # Vincula los botones de la vista con los métodos del controlador
         self.view.on_add_button_click = self.add_fraccion
-        self.view.on_operate_button_click = self.operate_fracciones
+        self.view.on_sumar_button_click = self.sumar_fracciones
+        self.view.on_subtract_button_click = self.restar_fracciones
+        self.view.on_multiply_button_click = self.multiplicar_fracciones
+        self.view.on_divide_button_click = self.dividir_fracciones
 
     def add_fraccion(self, numerador, denominador):
         """Añade una fracción al modelo."""
@@ -16,23 +19,38 @@ class Controller:
         except ValueError as e:
             self.view.update_display(f"Error: {e}")
 
-    def operate_fracciones(self, operation):
-        """Realiza una operación entre las dos últimas fracciones."""
+    def sumar_fracciones(self):
+        """Suma las dos últimas fracciones del modelo."""
         try:
-            if operation == "suma":
-                resultado = self.model.suma()
-            elif operation == "resta":
-                resultado = self.model.resta()
-            elif operation == "multiplicacion":
-                resultado = self.model.multiplicacion()
-            elif operation == "division":
-                resultado = self.model.division()
-            else:
-                self.view.update_display("Operación no válida.")
-                return
-
-            # Actualiza la vista con el resultado
+            resultado = self.model.suma()
             self.view.update_display(f"Resultado: {resultado.numerador}/{resultado.denominador}")
+        except ValueError as e:
+            self.view.update_display(f"Error: {e}")
+
+    def restar_fracciones(self):
+        """Resta las dos últimas fracciones del modelo."""
+        try:
+            resultado = self.model.resta()
+            self.view.update_display(f"Resultado: {resultado.numerador}/{resultado.denominador}")
+        except ValueError as e:
+            self.view.update_display(f"Error: {e}")
+
+    def multiplicar_fracciones(self):
+        """Multiplica las dos últimas fracciones del modelo."""
+        try:
+            resultado = self.model.multiplicacion()
+            self.view.update_display(f"Resultado: {resultado.numerador}/{resultado.denominador}")
+        except ValueError as e:
+            self.view.update_display(f"Error: {e}")
+
+    def dividir_fracciones(self):
+        """Divide las dos últimas fracciones del modelo."""
+        try:
+            resultado = self.model.division()
+            self.view.update_display(f"Resultado: {resultado.numerador}/{resultado.denominador}")
+        except ValueError as e:
+            self.view.update_display(f"Error: {e}")        
+
         except ValueError as e:
             self.view.update_display(f"Error: {e}")
         
