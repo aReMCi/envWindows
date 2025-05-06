@@ -7,14 +7,13 @@ from models.model import DataModel as Model
 def main():
     # Crear la ventana principal
     root = tk.Tk()
-    root.title("Tkinter MVC App")
+    root.title("Calculadora de")
     root.geometry("600x400+100+0")
     root.config(bg="lightblue")
     root.iconbitmap("src/logo.ico")  # Asegúrate de que el archivo logo.ico exista y esté en la ruta correcta
 
     # Crear el modelo, la vista y el controlador
     model = Model()
-    model.add_fraccion(1, 2)  # Añade una fracción inicial al modelo
     view = View(root)
     controller = Controller(model, view)
 
