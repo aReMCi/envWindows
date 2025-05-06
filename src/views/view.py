@@ -14,6 +14,7 @@ class View:
         self.on_subtract_button_click = None
         self.on_multiply_button_click = None
         self.on_divide_button_click = None
+        self.on_view_button_click = None
 
         # Entrada para numerador y denominador
         self.numerador_entry = Entry(self.frame, width=10)
@@ -40,6 +41,9 @@ class View:
         # Botón para dividir fracciones
         self.divide_button = Button(self.frame, text="Dividir", command=self._handle_divide_button_click)
         self.divide_button.pack()
+
+        # Botón para ver fracciones
+        self.view_button = Button(self.frame, text="Ver Fracciones", command=self._handle_view_button_click)
 
     def _handle_add_button_click(self):
         """Llama al método asignado por el controlador."""
@@ -77,6 +81,13 @@ class View:
             self.on_divide_button_click()
         else:
             print("Error: No se ha asignado un controlador para el botón 'Dividir'")
+
+    def _handle_view_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_view_button_click:
+            self.on_view_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Ver Fracciones'")
 
     def update_display(self, text):
         """Actualiza la etiqueta con el texto proporcionado."""

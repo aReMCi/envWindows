@@ -10,6 +10,7 @@ class Controller:
         self.view.on_subtract_button_click = self.restar_fracciones
         self.view.on_multiply_button_click = self.multiplicar_fracciones
         self.view.on_divide_button_click = self.dividir_fracciones
+        self.view.on_view_button_click = self.view_fracciones
 
     def add_fraccion(self, numerador, denominador):
         """Añade una fracción al modelo."""
@@ -53,5 +54,13 @@ class Controller:
 
         except ValueError as e:
             self.view.update_display(f"Error: {e}")
-        
+
+    def view_fracciones(self):
+        """Muestra todas las fracciones del modelo"""
+        fracciones = self.model.get_fracciones()
+        if fracciones:
+            fraccion_texto = ", ".join([f"{f.numerador}/{f.denominador}" for f in fracciones])
+            self.view.update_display(f"Fracciones: {fraccion_texto}")
+        else:
+            self.view.update_display("No hay fracciones en el modelo")        
         
