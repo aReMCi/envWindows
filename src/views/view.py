@@ -15,6 +15,7 @@ class View:
         self.on_multiply_button_click = None
         self.on_divide_button_click = None
         self.on_view_button_click = None
+        self.on_clear_button_click = None
 
         # Entrada para numerador y denominador
         self.numerador_entry = Entry(self.frame, width=10)
@@ -44,6 +45,11 @@ class View:
 
         # Botón para ver fracciones
         self.view_button = Button(self.frame, text="Ver Fracciones", command=self._handle_view_button_click)
+        self.view_button.pack()
+
+        #Boton para limpiar
+        self.clear_button = Button(self.frame, text="Limpiar", command=self._handle_clear_button_click)
+        self.clear_button.pack()
 
     def _handle_add_button_click(self):
         """Llama al método asignado por el controlador."""
@@ -95,3 +101,10 @@ class View:
             self.result_label = Label(self.frame, text="")
             self.result_label.pack()
         self.result_label.config(text=text)
+
+    def _handle_clear_button_click(self):
+        """Llama al método asignado por el controlador."""
+        if self.on_clear_button_click:
+            self.on_clear_button_click()
+        else:
+            print("Error: No se ha asignado un controlador para el botón 'Limpiar'")

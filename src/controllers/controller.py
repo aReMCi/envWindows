@@ -11,6 +11,7 @@ class Controller:
         self.view.on_multiply_button_click = self.multiplicar_fracciones
         self.view.on_divide_button_click = self.dividir_fracciones
         self.view.on_view_button_click = self.view_fracciones
+        self.view.on_clear_button_click = self.clear_fracciones
 
     def add_fraccion(self, numerador, denominador):
         """Añade una fracción al modelo."""
@@ -62,5 +63,10 @@ class Controller:
             fraccion_texto = ", ".join([f"{f.numerador}/{f.denominador}" for f in fracciones])
             self.view.update_display(f"Fracciones: {fraccion_texto}")
         else:
-            self.view.update_display("No hay fracciones en el modelo")        
+            self.view.update_display("No hay fracciones en el modelo")   
+
+    def clear_fracciones(self):
+        """Limpia todas las fracciones del modelo."""
+        self.model.clear_fracciones()
+        self.view.update_display("Fracciones limpiadas")     
         
