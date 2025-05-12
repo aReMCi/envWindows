@@ -71,7 +71,7 @@ class Controller:
         try:
             fraccion = self.model.get_fraccion(-1)
             if fraccion:
-                resultado = fraccion.simiplificar()
+                resultado = fraccion.simplificar()
                 self.model.reemplazar(resultado.numerador, resultado.denominador,-1)
                 self.view.update_display(f"Fracción simplificada: {resultado.numerador}/{resultado.denominador}")
             else:

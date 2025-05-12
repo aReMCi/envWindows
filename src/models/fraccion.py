@@ -62,6 +62,6 @@ class Fraccion:
         nuevo_denominador = self.denominador * otra_fraccion.numerador
         return Fraccion(nuevo_numerador, nuevo_denominador)
     
-    def simiplificar(self):
+    def simplificar(self):
         mcd = math.gcd(self.numerador, self.denominador)
         return Fraccion(self.numerador // mcd, self.denominador // mcd)

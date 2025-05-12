@@ -67,7 +67,7 @@ class DataModel:
             raise ValueError("Error: Se requiere al menos una fracción para simplificar")
         else:
             fraccion = self.fracciones[-1]
-            resultado = fraccion.simiplificar()
+            resultado = fraccion.simplificar()
             self.fracciones[-1] = resultado
 
     def reemplazar(self, nuevo_numerador, nuevo_denominador,pos):  
