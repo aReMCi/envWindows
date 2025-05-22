@@ -10,8 +10,8 @@ def main():
     root.title("Calculadora de Fracciones")
     root.geometry("600x400+100+0")
     root.config(bg="lightblue")
-    root.iconbitmap("src/logo.ico")  # Asegúrate de que el archivo logo.ico exista y esté en la ruta correcta
-
+    root.iconbitmap("src/logo.ico") 
+    
     # Crear el modelo, la vista y el controlador
     model = Model()
     view = View(root)
